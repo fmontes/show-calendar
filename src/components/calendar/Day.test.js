@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import Day from './Day'
 import { render, cleanup } from 'react-testing-library';
 
