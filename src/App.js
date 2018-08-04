@@ -21,13 +21,17 @@ const Wrapper = styled.div`
 `
 
 class App extends Component {
+    onSubmit(e) {
+        console.log(e);
+    }
+
     render() {
         return (
             <Wrapper>
                 <Header data-testid="header">
                     <h1>Show Calendar</h1>
                 </Header>
-                <Form />
+                <Form onSubmit={this.onSubmit} />
                 <Calendar className="calendar" />
             </Wrapper>
         )
