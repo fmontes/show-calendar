@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types';
 import Week from './Week'
 
-const CalendarWrapper = styled.div`
+const MonthWrapper = styled.div`
 `
 
 const Table = styled.table`
@@ -18,12 +18,12 @@ const Table = styled.table`
     }
 `
 
-class Calendar extends Component {
+class Month extends Component {
     render() {
         return (
-            <CalendarWrapper>
+            <MonthWrapper>
                 <h3 data-testid="name">{this.props.name}</h3>
-                <Table data-testid="calendar">
+                <Table data-testid="month">
                     <thead>
                         <tr data-testid="headings">
                             <th>Sun</th>
@@ -39,13 +39,13 @@ class Calendar extends Component {
                         { this.props.weeks ? this.props.weeks.map((week, index) => <Week data={week} key={index} />) : [] }
                     </tbody>
                 </Table>
-            </CalendarWrapper>
+            </MonthWrapper>
         )
     }
 }
 
-Calendar.propTypes = {
+Month.propTypes = {
     data: PropTypes.arrayOf(PropTypes.array)
 };
 
-export default Calendar
+export default Month

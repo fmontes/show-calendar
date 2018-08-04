@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Calendar from './Calendar'
+import Month from './Month'
 import { render, cleanup } from 'react-testing-library';
 
 const mock = {
@@ -71,33 +71,33 @@ afterEach(cleanup)
 
 it('renders without crashing', () => {
     const div = document.createElement('div')
-    ReactDOM.render(<Calendar />, div)
+    ReactDOM.render(<Month />, div)
     ReactDOM.unmountComponentAtNode(div)
 })
 
 it('should have table', () => {
-    const { getByTestId } = render(<Calendar />)
-    const table = getByTestId('calendar')
+    const { getByTestId } = render(<Month />)
+    const table = getByTestId('month')
     expect(table).toBeDefined()
 })
 
 it('should have days header', () => {
-    const { getByTestId } = render(<Calendar />)
+    const { getByTestId } = render(<Month />)
     const headings = getByTestId('headings')
-    const daysFromCalendar = Array.from(headings.childNodes).map(el => el.textContent)
+    const renderedHeadings = Array.from(headings.childNodes).map(el => el.textContent)
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     
-    expect(daysFromCalendar).toEqual(days)
+    expect(renderedHeadings).toEqual(days)
 })
 
 it('should render title', () => {
-    const { getByTestId } = render(<Calendar name={mock.name} />)
+    const { getByTestId } = render(<Month name={mock.name} />)
     const name = getByTestId('name')
     expect(name.textContent).toEqual('January 2018')
 })
 
 it('should render weeks', () => {
-    const { getAllByTestId } = render(<Calendar weeks={mock.weeks} />)
+    const { getAllByTestId } = render(<Month weeks={mock.weeks} />)
     const weeks = getAllByTestId('week')
     expect(weeks.length).toEqual(2)
 })

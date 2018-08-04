@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import Calendar from './components/calendar/Calendar'
+import Month from './components/calendar/Month'
 import Form from './components/form/Form'
 
 const mock = [
@@ -117,7 +117,7 @@ class App extends Component {
                     <h1>Show Calendar</h1>
                 </Header>
                 <Form onSubmit={this.onSubmit} />
-                <Calendar className="calendar" />
+                <Month className="calendar" />
             </Wrapper>
         )
     }

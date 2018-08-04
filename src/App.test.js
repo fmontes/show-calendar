@@ -21,8 +21,8 @@ it('should have form', () => {
     expect(form).toBeDefined();
 })
 
-it('should have calendar', () => {
+it('should have month calendar', () => {
     const { getByTestId } = render(<App />);
-    const calendar = getByTestId('calendar');
-    expect(calendar).toBeDefined();
+    const month = getByTestId('month');
+    expect(month).toBeDefined();
 })
