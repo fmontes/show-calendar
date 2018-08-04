@@ -1,20 +1,35 @@
 import React, { Component } from 'react'
-import 'normalize.css'
-import './App.css'
+import styled from 'styled-components'
 
 import Calendar from "./components/calendar/Calendar"
 import Form from "./components/form/Form"
 
+const Header = styled.header`
+    background-color: #222;
+    padding: 20px;
+    color: white;
+
+    h1 {
+        font-size: 1.5rem;
+    }
+`
+
+const Wrapper = styled.div`
+    form {
+        margin-bottom: var(--space2);
+    }
+`
+
 class App extends Component {
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">Show Calendar</h1>
-                </header>
-                <Form />
-                <Calendar />
-            </div>
+            <Wrapper>
+                <Header>
+                    <h1>Show Calendar</h1>
+                </Header>
+                <Form  />
+                <Calendar className="calendar" />
+            </Wrapper>
         )
     }
 }

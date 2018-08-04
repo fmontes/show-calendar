@@ -1,3 +1,15 @@
+:root {
+    --space: 8px;
+    --space2: 16px;
+    --space3: 32px;
+    --gray: #666;
+    --gray-light: #ddd;
+}
+
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;

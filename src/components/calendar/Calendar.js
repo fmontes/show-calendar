@@ -1,9 +1,22 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
+
+const Table = styled.table`
+    border-collapse: collapse;
+
+    th {
+        background-color: var(--gray-light);
+    }
+
+    th, td {
+        padding: var(--space);
+    }
+`
 
 class Calendar extends Component {
     render() {
         return (
-            <table>
+            <Table>
                 <thead>
                     <tr>
                         <th>Sun</th>
@@ -26,7 +39,7 @@ class Calendar extends Component {
                         <td>7</td>
                     </tr>
                 </tbody>
-            </table>
+            </Table>
         )
     }
 }
