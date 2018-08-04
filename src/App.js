@@ -20,6 +20,13 @@ const Wrapper = styled.div`
     }
 `
 
+const Calendars = styled.main`
+    display: grid;
+    grid-gap: 2vw;
+    grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
+    margin: 0 5vw;
+`
+
 class App extends Component {
     onSubmit(e) {
         console.log(e)
@@ -32,7 +39,9 @@ class App extends Component {
                     <h1>Show Calendar</h1>
                 </Header>
                 <Form onSubmit={this.onSubmit} />
-                {this.props.data ? this.props.data.map((month, index) => <Month name={month.name} weeks={month.weeks} key={index} />) : []}
+                <Calendars>
+                    {this.props.data ? this.props.data.map((month, index) => <Month name={month.name} weeks={month.weeks} key={index} />) : []}
+                </Calendars>
             </Wrapper>
         )
     }

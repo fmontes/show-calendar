@@ -8,6 +8,7 @@ const MonthWrapper = styled.div`
 
 const Table = styled.table`
     border-collapse: collapse;
+    width: 100%
 
     th {
         background-color: var(--gray-light);
