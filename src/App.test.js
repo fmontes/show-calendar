@@ -1,7 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import { render } from 'react-testing-library';
+import { render, cleanup } from 'react-testing-library';
+import data from './tests/mocks'
+
+afterEach(cleanup)
 
 it('renders without crashing', () => {
     const div = document.createElement('div')
@@ -10,19 +13,19 @@ it('renders without crashing', () => {
 })
 
 it('should have header', () => {
-    const { getByTestId } = render(<App />);
-    const header = getByTestId('header');
-    expect(header.innerHTML).toEqual('<h1>Show Calendar</h1>');
+    const { getByTestId } = render(<App />)
+    const header = getByTestId('header')
+    expect(header.innerHTML).toEqual('<h1>Show Calendar</h1>')
 })
 
 it('should have form', () => {
-    const { getByTestId } = render(<App />);
-    const form = getByTestId('form');
-    expect(form).toBeDefined();
+    const { getByTestId } = render(<App />)
+    const form = getByTestId('form')
+    expect(form).toBeDefined()
 })
 
 it('should have month calendar', () => {
-    const { getByTestId } = render(<App />);
-    const month = getByTestId('month');
-    expect(month).toBeDefined();
+    const { getAllByTestId } = render(<App data={data} />)
+    const month = getAllByTestId('month')
+    expect(month.length).toBe(2)
 })

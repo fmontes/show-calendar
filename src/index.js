@@ -4,6 +4,7 @@ import 'normalize.css'
 import './index.css'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
+import mock from './tests/mocks'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App data={mock} />, document.getElementById('root'))
 registerServiceWorker()

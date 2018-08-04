@@ -21,9 +21,9 @@ const Table = styled.table`
 class Month extends Component {
     render() {
         return (
-            <MonthWrapper>
+            <MonthWrapper data-testid="month">
                 <h3 data-testid="name">{this.props.name}</h3>
-                <Table data-testid="month">
+                <Table>
                     <thead>
                         <tr data-testid="headings">
                             <th>Sun</th>
