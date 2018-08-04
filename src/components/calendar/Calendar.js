@@ -18,7 +18,7 @@ class Calendar extends Component {
         return (
             <Table data-testid="calendar">
                 <thead>
-                    <tr>
+                    <tr data-testid="headings">
                         <th>Sun</th>
                         <th>Mon</th>
                         <th>Tue</th>

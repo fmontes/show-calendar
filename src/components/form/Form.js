@@ -21,10 +21,10 @@ class Form extends Component {
     render() {
         return (
             <FormWrapper data-testid="form">
-                <input type="date" name="date" />
-                <input type="number" name="days" placeholder="Number of days" />
-                <input type="country" name="country" placeholder="Country" />
-                <button type="submit">Submit</button>
+                <input type="date" name="date" data-testid="date" />
+                <input type="number" name="days" placeholder="Number of days" data-testid="days" />
+                <input type="text" name="country" placeholder="Country" data-testid="country" />
+                <button type="submit" data-testid="submit">Submit</button>
             </FormWrapper>
         )
     }
