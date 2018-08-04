@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types';
 
 const Td = styled.td`
     background-color: lightgreen;
@@ -33,5 +34,9 @@ class Day extends Component {
         )
     }
 }
+
+Day.propTypes = {
+    data: PropTypes.object
+};
 
 export default Day

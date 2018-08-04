@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types';
 import Day from './Day'
 
 const DAYS_IN_WEEK = 7
@@ -38,5 +39,9 @@ class Week extends Component {
         )
     }
 }
+
+Week.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default Week

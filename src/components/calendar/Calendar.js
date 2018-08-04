@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types';
+import Week from './Week'
 
 const Table = styled.table`
     border-collapse: collapse;
@@ -29,19 +31,15 @@ class Calendar extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                    </tr>
+                    { this.props.data ? this.props.data.map((week, index) => <Week data={week} key={index} />) : [] }
                 </tbody>
             </Table>
         )
     }
 }
+
+Calendar.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.array)
+};
 
 export default Calendar
