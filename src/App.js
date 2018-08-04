@@ -117,7 +117,7 @@ class App extends Component {
                     <h1>Show Calendar</h1>
                 </Header>
                 <Form onSubmit={this.onSubmit} />
-                <Month className="calendar" />
+                <Month />
             </Wrapper>
         )
     }
