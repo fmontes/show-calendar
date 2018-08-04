@@ -24,10 +24,10 @@ class App extends Component {
     render() {
         return (
             <Wrapper>
-                <Header>
+                <Header data-testid="header">
                     <h1>Show Calendar</h1>
                 </Header>
-                <Form  />
+                <Form />
                 <Calendar className="calendar" />
             </Wrapper>
         )

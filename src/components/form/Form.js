@@ -20,7 +20,7 @@ const FormWrapper = styled.form`
 class Form extends Component {
     render() {
         return (
-            <FormWrapper>
+            <FormWrapper data-testid="form">
                 <input type="date" name="date" />
                 <input type="number" name="days" placeholder="Number of days" />
                 <input type="country" name="country" placeholder="Country" />

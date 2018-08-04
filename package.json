@@ -15,6 +15,7 @@
         "eject": "react-scripts eject"
     },
     "devDependencies": {
-        "normalize.css": "^8.0.0"
+        "normalize.css": "^8.0.0",
+        "react-testing-library": "^4.1.6"
     }
 }

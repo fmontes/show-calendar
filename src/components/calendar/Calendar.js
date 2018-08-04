@@ -16,7 +16,7 @@ const Table = styled.table`
 class Calendar extends Component {
     render() {
         return (
-            <Table>
+            <Table data-testid="calendar">
                 <thead>
                     <tr>
                         <th>Sun</th>
