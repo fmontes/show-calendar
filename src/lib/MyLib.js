@@ -92,7 +92,7 @@ async function splitIntoWeeks(month, country) {
     let holidaysInMonth = [];
 
     if (!isFuture(month[0])) {
-        holidaysInMonth = await getHolidays(month[0], country)
+        holidaysInMonth = await getHolidays(month[0], country).catch(() => [])
     }
     
     month.forEach(day => {
