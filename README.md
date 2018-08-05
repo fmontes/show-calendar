@@ -1,5 +1,5 @@
 ## Show Calendar
-Pick a date, add some days and type a country to get holiday information
+Pick a date, add some days and type a country to get holiday information, check [DEMO](https://fmontes.github.io/show-calendar/) here.
 
 ## Available Scripts
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
