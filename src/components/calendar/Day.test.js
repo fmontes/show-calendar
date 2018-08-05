@@ -7,7 +7,7 @@ afterEach(cleanup)
 const tr = document.createElement('tr')
 let mock = {
     day: 5,
-    holiday: true,
+    holiday: null,
     number: 22,
     weekend: false,
 }
@@ -42,4 +42,19 @@ it('should render disabled day', () => {
     const day = getByTestId('day')
     expect(day.textContent).toEqual('')
     expect(day.classList.contains('disabled')).toBe(true)
+})
+
+it('should render holiday', () => {
+    mock = {
+        ...mock,
+        holiday: {
+            name: 'Fake Holiday'
+        }
+    }
+    const { getByTestId } = render(<Day data={mock} />, {container: tr})
+    const day = getByTestId('day')
+    expect(day.classList.contains('holiday')).toBe(true)
+
+    const tooltip = getByTestId('tooltip')
+    expect(tooltip.textContent).toEqual('Fake Holiday')
 })
