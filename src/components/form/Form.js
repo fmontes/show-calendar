@@ -51,9 +51,9 @@ class Form extends Component {
         return (
             <FormWrapper data-testid="form" onSubmit={this.handleSubmit}>
                 <h1 data-testid="h1">{this.props.test}</h1>
-                <input type="date" name="date" data-testid="date" onChange={this.handleChange} />
-                <input type="number" name="days" placeholder="Number of days" data-testid="days" onChange={this.handleChange} />
-                <input type="text" name="country" placeholder="Country" data-testid="country" onChange={this.handleChange} />
+                <input type="date" name="date" data-testid="date" onChange={this.handleChange} required />
+                <input type="number" name="days" placeholder="Number of days" min="1" data-testid="days" onChange={this.handleChange} required />
+                <input type="text" name="country" placeholder="Country" data-testid="country" onChange={this.handleChange} required />
                 <button type="submit" data-testid="submit">Submit</button>
             </FormWrapper>
         )
