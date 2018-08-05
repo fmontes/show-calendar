@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 import Calendar from './components/calendar/Calendar'
 import Form from './components/form/Form'
+import LoadingIndicator from './components/LoadingIndicator'
+
 import getData from './lib/MyLib';
 
 const Header = styled.header`
@@ -27,14 +29,22 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: []
+            data: [],
+            loading: false
         }
     }
     onSubmit = e => {
+        this.setState({
+            ...this.state,
+            loading: true,
+            data: []
+        })
+
         getData(e).then(data => {
             this.setState({
                 ...this.state,
-                data: data
+                data: data,
+                loading: false
             })
         })
     }
@@ -47,6 +57,7 @@ class App extends Component {
                 </Header>
                 <Form onSubmit={this.onSubmit} />
                 <Warning>Due free API limitations, holidays only works on past months</Warning>
+                {this.state.loading ? <LoadingIndicator /> : []}
                 <Calendar data={this.state.data} />
             </div>
         )

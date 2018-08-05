@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import { render, cleanup } from 'react-testing-library';
 
-
 afterEach(cleanup)
 
 it('renders without crashing', () => {
@@ -29,3 +28,5 @@ it('should have calendar', () => {
     const month = getAllByTestId('calendar')
     expect(month.length).toBe(1)
 })
+
+xit('should show and hide loading indicator accordingly', () => {})
