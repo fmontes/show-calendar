@@ -1,18 +1,27 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import PropTypes from 'prop-types';
 import Day from './Day'
 
+const getEmptyDays = (howMany) => new Array(howMany).fill(null)
 const DAYS_IN_WEEK = 7
 
-const Tr = styled.tr`
-`
 
 class Week extends Component {
     fillUpWeek(data) {
-        const daysMissing = DAYS_IN_WEEK - data.length
-        const fillUp = new Array(daysMissing).fill(null)
-        return data[0].day === 0 ? [...data, ...fillUp] : [...fillUp, ...data]
+        const firstDay = data[0].day
+        const lastDay = data[data.length - 1].day
+
+        let result = [...data]
+
+        if (firstDay > 0) {
+            result = [...getEmptyDays(firstDay), ...result]
+        }
+
+        if (lastDay < 6) {
+            result = [...result, ...getEmptyDays(DAYS_IN_WEEK - lastDay - 1)]
+        }
+
+        return result
     }
 
     render() {
@@ -33,9 +42,9 @@ class Week extends Component {
         }
         
         return (
-            <Tr data-testid="week">
+            <tr data-testid="week">
                 {days}
-            </Tr>
+            </tr>
         )
     }
 }

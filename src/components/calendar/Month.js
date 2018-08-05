@@ -11,11 +11,14 @@ const Table = styled.table`
     width: 100%
 
     th {
-        background-color: var(--gray-light);
+        background-color: var(--gray);
+        color: #FFF;
     }
 
     th, td {
         padding: var(--space);
+        text-align: center;
+        border: solid 1px var(--gray);
     }
 `
 

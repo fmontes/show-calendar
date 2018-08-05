@@ -90,3 +90,15 @@ it('should add days to the end and render full week', () => {
     const customMockDays = [...mockDays.slice(0, 3), ...["", "", "", ""]]
     expect(customMockDays).toEqual(daysOfTheWeek)
 })
+
+fit('should add days beggiend and end and render full week', () => {
+    const mock = data.slice(2, 5)
+
+    const { getByTestId } = render(<Week data={mock} />, {container: tbody})
+    const week = getByTestId('week')
+    expect(week.childElementCount).toBe(7)
+
+    const daysOfTheWeek = Array.from(week.childNodes).map(el => el.textContent)
+    const customMockDays = [...["", ""], ...mockDays.slice(2, 5), ...["", ""]]
+    expect(customMockDays).toEqual(daysOfTheWeek)
+})

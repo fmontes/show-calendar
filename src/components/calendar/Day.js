@@ -10,7 +10,7 @@ const Td = styled.td`
     }
 
     &.disabled {
-        background-color: var(--gray);
+        background-color: var(--gray-light);
     }
 `
 
