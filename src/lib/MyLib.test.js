@@ -81,8 +81,8 @@ const mock = [
 
 it('should get model', () => {
     const model = getData({
-        date: new Date('12/30/2018'),
-        days: 9,
+        date: '12/30/2018',
+        days: '9',
         country: 'US'
     });
     expect(model).toEqual(mock);

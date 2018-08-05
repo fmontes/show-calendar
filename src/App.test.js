@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import { render, cleanup } from 'react-testing-library';
-import data from './tests/mocks'
+
 
 afterEach(cleanup)
 
@@ -24,8 +24,8 @@ it('should have form', () => {
     expect(form).toBeDefined()
 })
 
-it('should have month calendar', () => {
-    const { getAllByTestId } = render(<App data={data} />)
-    const month = getAllByTestId('month')
-    expect(month.length).toBe(2)
+it('should have calendar', () => {
+    const { getAllByTestId } = render(<App />)
+    const month = getAllByTestId('calendar')
+    expect(month.length).toBe(1)
 })

@@ -99,8 +99,10 @@ function splitIntoWeeks(month) {
 }
 
 export default (params) => {
-    const finalDate = getEndDate(params.date, params.days)
-    const range = getRange(params.date, finalDate)
+    const date = new Date(params.date.split('-').join('/'))
+    const days = parseInt(params.days, 10)
+    const finalDate = getEndDate(date, days)
+    const range = getRange(date, finalDate)
     const months = splitMonths(range)
     return getModel(months)
 }
