@@ -1,24 +1,26 @@
+import getHolidays from './Holidays'
+
 const MONTH_NAMES = [
     'January',
     'February',
     'March',
     'April',
     'May',
-    'Junio',
-    'Julio',
+    'June',
+    'July',
     'August',
     'September',
-    'Octuber',
+    'October',
     'November',
     'December',
 ]
 
-function getDayModel(day) {
+function getDayModel(day, holiday) {
     const dayOfTheWeek = day.getDay()
 
     return {
         day: dayOfTheWeek,
-        holiday: false, // Will set this later
+        holiday: holiday,
         number: day.getDate(),
         weekend: dayOfTheWeek === 0 || dayOfTheWeek === 6,
     }
@@ -30,13 +32,13 @@ function getEndDate(date, days) {
     return result
 }
 
-function getModel(months) {
-    return months.map(month => {
+async function getModel(months, country) {
+    return await Promise.all(months.map(async month => {
         return {
             name: getMonthName(month[0]),
-            weeks: splitIntoWeeks(month),
+            weeks: await splitIntoWeeks(month, country),
         }
-    })
+    }))
 }
 
 function getMonthName(month) {
@@ -54,6 +56,11 @@ function getRange(start, end) {
     }
 
     return dates
+}
+
+function isFuture(day) {
+    const today = new Date();
+    return day.getFullYear() > today.getFullYear() || day.getMonth() >= today.getMonth()
 }
 
 function splitMonths(range) {
@@ -79,16 +86,31 @@ function splitMonths(range) {
     return result
 }
 
-function splitIntoWeeks(month) {
+async function splitIntoWeeks(month, country) {
     const result = []
     let currentWeek = 0
+    let holidaysInMonth = [];
 
+    if (!isFuture(month[0])) {
+        holidaysInMonth = await getHolidays(month[0], country)
+    }
+    
     month.forEach(day => {
+        let holyday = null;
+
+        if (holidaysInMonth.length) {
+            const filtered = holidaysInMonth.filter(holiday => {
+                const holidayDate = new Date(holiday.date.split('-').join('/'))
+                return holidayDate.getTime() === day.getTime()
+            });
+            holyday = filtered[0] || null
+        }
+
         if (!result[currentWeek]) {
             result[currentWeek] = []
         }
 
-        result[currentWeek].push(getDayModel(day))
+        result[currentWeek].push(getDayModel(day, holyday))
 
         if (day.getDay() === 6) {
             currentWeek++
@@ -98,13 +120,11 @@ function splitIntoWeeks(month) {
     return result
 }
 
-export default (params) => {
+export default async params => {
     const date = new Date(params.date.split('-').join('/'))
     const days = parseInt(params.days, 10)
     const finalDate = getEndDate(date, days)
     const range = getRange(date, finalDate)
     const months = splitMonths(range)
-    return getModel(months)
+    return await getModel(months, params.country)
 }
-
-

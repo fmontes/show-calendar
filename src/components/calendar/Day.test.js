@@ -4,13 +4,6 @@ import { render, cleanup } from 'react-testing-library';
 
 afterEach(cleanup)
 
-// {
-//     day: 5,
-//     holiday: true,
-//     number: 22,
-//     weekend: false,
-// },
-
 const tr = document.createElement('tr')
 let mock = {
     day: 5,
@@ -40,7 +33,7 @@ it('should render weekend day', () => {
     const { getByTestId } = render(<Day data={mock} />, {container: tr})
     const day = getByTestId('day')
     expect(day.textContent).toEqual('22')
-    expect(day.classList).toContain('weekend')
+    expect(day.classList.contains('weekend')).toBe(true)
 })
 
 it('should render disabled day', () => {

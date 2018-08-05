@@ -9,6 +9,10 @@ const Td = styled.td`
         background-color: yellow;
     }
 
+    &.holiday {
+        background-color: orange;
+    }
+
     &.disabled {
         background-color: var(--gray-light);
     }
@@ -16,21 +20,25 @@ const Td = styled.td`
 
 class Day extends Component {
     render() {
-        let className = '';
+        let className = [];
         let number = '';
 
         if (this.props.data) {
             number = this.props.data.number
 
             if (this.props.data.weekend) {
-                className = 'weekend'
+                className.push('weekend')
+            }
+
+            if (this.props.data.holiday) {
+                className.push('holiday')
             }
         } else {
-            className = 'disabled'
+            className.push('disabled')
         }
 
         return (
-            <Td data-testid="day" className={className}>{number}</Td>
+            <Td data-testid="day" className={className.join(' ')}>{number}</Td>
         )
     }
 }

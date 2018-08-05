@@ -15,10 +15,12 @@ const Header = styled.header`
     }
 `
 
-const Wrapper = styled.div`
-    form {
-        margin-bottom: var(--space2);
-    }
+const Warning = styled.div`
+    background-color: orange;
+    color: #FFF;
+    margin-bottom: var(--space2);
+    padding: var(--space);
+    text-align: center;
 `
 
 class App extends Component {
@@ -29,21 +31,24 @@ class App extends Component {
         }
     }
     onSubmit = e => {
-        this.setState({
-            ...this.state,
-            data: getData(e)
+        getData(e).then(data => {
+            this.setState({
+                ...this.state,
+                data: data
+            })
         })
     }
 
     render() {
         return (
-            <Wrapper>
+            <div>
                 <Header data-testid="header">
                     <h1>Show Calendar</h1>
                 </Header>
                 <Form onSubmit={this.onSubmit} />
+                <Warning>Due free API limitations, holidays only works on past months</Warning>
                 <Calendar data={this.state.data} />
-            </Wrapper>
+            </div>
         )
     }
 }
