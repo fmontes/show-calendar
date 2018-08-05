@@ -17,6 +17,7 @@ const FormWrapper = styled.div`
     input {
         border: solid 1px var(--gray);
         padding: 4px var(--space);
+        width: 100%;
     }
 
     button {

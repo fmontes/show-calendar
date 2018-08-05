@@ -28,7 +28,7 @@ const Td = styled.td`
 const Tooltip = styled.span`
     background-color: var(--gray);
     color: #FFF;
-    left: 0;
+    right: 0;
     opacity: 0;
     padding: 4px;
     position: absolute;
@@ -59,6 +59,7 @@ class Day extends Component {
 
         return (
             <Td data-testid="day" className={className.join(' ')}>
+                
                 {number}
                 {this.props.data && this.props.data.holiday ? <Tooltip data-testid="tooltip">{this.props.data.holiday.name}</Tooltip> : []}
             </Td>
